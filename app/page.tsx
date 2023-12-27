@@ -1,4 +1,6 @@
+"use client";
 import Image from "next/image";
+import CryptoChart from "./components/cryptoChart";
 
 export default function Home() {
   return (
@@ -104,6 +106,7 @@ export default function Home() {
           </p>
         </a>
       </div>
+      <CryptoChart />
     </main>
   );
 }
