@@ -20,11 +20,11 @@ interface CryptoChartProps {
 
 export default function CryptoChart({ asset }: CryptoChartProps) {
   const chartComponentRef = useRef<HighchartsReact.RefObject>(null);
-  const { data: cryptoHistoricalData, isLoading } = useHistoricalData({
-    id: asset?.id,
+  const { data: cryptoHistoricalData } = useHistoricalData({
+    id: asset.id,
   });
 
-  const options = useMemo<Highcharts.Options>(
+  const options = useMemo<Highcharts.Options>( // Create dynamic chart options based on historical data and asset
     () => ({
       chart: {
         zooming: {
@@ -50,7 +50,6 @@ export default function CryptoChart({ asset }: CryptoChartProps) {
         title: {
           text: "Exchange rate",
         },
-        gridLineWidth: 0,
       },
       legend: {
         enabled: false,
@@ -60,8 +59,6 @@ export default function CryptoChart({ asset }: CryptoChartProps) {
           marker: {
             radius: 2,
           },
-
-          lineWidth: 4,
           states: {
             hover: {
               lineWidth: 1,
@@ -91,13 +88,16 @@ export default function CryptoChart({ asset }: CryptoChartProps) {
   const { maxPrice, minPrice, priceChange, percentChange } = usePriceMetrics(
     asset,
     cryptoHistoricalData,
+  ); // Extracted metrics calculation logic to the custom hook for code separation
+
+  const randomBgColor = useMemo(
+    // Apply different background colors based on the price change
+    () => (Number(asset.changePercent24Hr) > 0 ? randomGreenBg : randomRedBg),
+    [asset.changePercent24Hr],
   );
 
-  const randomBgColor =
-    Number(asset.changePercent24Hr) > 0 ? randomGreenBg : randomRedBg;
   return (
     <div
-      key={asset.id}
       className={`w-full rounded-md shadow-xl ${
         randomBgColor.dark[Math.floor(Math.random() * 10)]
       } ${randomBgColor.light[Math.floor(Math.random() * 10)]}`}

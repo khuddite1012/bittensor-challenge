@@ -1,36 +1,35 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is CryptoCurrency Market Dashboard app created by William Hall
 
 ## Getting Started
 
-First, run the development server:
+First, use npm as a package manager: (make sure to use the latest node version to avoid any issues)
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
+## Main Techs Used
 
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [React-Query](https://tanstack.com/query/latest/), [Axios](https://axios-http.com/docs/intro) (For networking and caching)
+- [HighCharts](https://www.highcharts.com/) (For displaying charts)
+- [TailwindCSS](https://tailwindcss.com/) (For styling)
+- [Eslint](https://eslint.org/), [Prettier](https://prettier.io/) (For linting and formatting)
+- [CoinCap API](https://docs.coincap.io/) (For fetching the top 12 assets and historical data for each asset)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## What's Implemented
 
-## Deploy on Vercel
+The impelmentaion is deployed to https://bittensor-challenge.vercel.app
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- The top 12 assets are fetched from CoinCap API, and each chart displays historical price change for the last 24 hours for each asset.
+- Each chart is zoomable on both desktop/mobile devices, supports some additional options (print, export, fullscreen), and highly interactive
+- UI is responsive across all devices, and different themes are applied based on system settings
+- Yaxis represents the timestamp in the local timezone, and Xaxis represents the price of the asset in USD.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+|                      Dark Theme                       |                       Light Theme                        |
+| :---------------------------------------------------: | :------------------------------------------------------: |
+| ![Dark Theme](./dark-theme.png?raw=true "Dark Theme") | ![Light Theme](./light-theme.png?raw=true "Light Theme") |

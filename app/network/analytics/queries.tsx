@@ -1,7 +1,6 @@
 import { useQuery } from "react-query";
 import {
   AssetsRequest,
-  HistoricalData,
   HistoricalDataRequest,
   getAssets,
   getHistoricalData,
