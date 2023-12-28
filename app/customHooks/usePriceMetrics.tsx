@@ -11,12 +11,12 @@ export default function usePriceMetrics(
 ) {
   const maxPrice = useMemo(() => {
     if (!cryptoHistoricalData) return undefined;
-    return Math.max(...cryptoHistoricalData.map((v) => v.priceUsd)).toFixed(2);
+    return Math.max(...cryptoHistoricalData.map((v) => v.priceUsd)).toFixed(4);
   }, [cryptoHistoricalData]);
 
   const minPrice = useMemo(() => {
     if (!cryptoHistoricalData) return undefined;
-    return Math.min(...cryptoHistoricalData.map((v) => v.priceUsd)).toFixed(2);
+    return Math.min(...cryptoHistoricalData.map((v) => v.priceUsd)).toFixed(4);
   }, [cryptoHistoricalData]);
 
   const priceChange = useMemo(() => {
@@ -24,7 +24,7 @@ export default function usePriceMetrics(
     const len = cryptoHistoricalData.length;
     return (
       cryptoHistoricalData[len - 1].priceUsd - cryptoHistoricalData[0].priceUsd
-    ).toFixed(5);
+    ).toFixed(6);
   }, [cryptoHistoricalData]);
 
   const percentChange = useMemo(() => {
