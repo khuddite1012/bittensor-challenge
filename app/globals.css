@@ -1,3 +1,4 @@
+@import url("https://code.highcharts.com/css/highcharts.css");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -24,4 +25,23 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+}
+
+/* override highcharts default css styles to fit our theme */
+
+:root {
+  --highcharts-color-0: rgb(var(--foreground-rgb));
+}
+
+.highcharts-graph {
+  stroke-width: 1px;
+}
+
+.highcharts-subtitle {
+  fill: rgb(var(--foreground-rgb));
+  font-size: 0.8em;
+}
+
+.highcharts-background {
+  fill: rgb(0, 0, 0, 0);
 }

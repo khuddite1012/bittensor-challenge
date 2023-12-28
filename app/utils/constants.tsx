@@ -1,0 +1,53 @@
+export const randomRedBg = {
+  dark: [
+    "dark:bg-[#903236]",
+    "dark:bg-[#aa1c37]",
+    "dark:bg-[#7f2835]",
+    "dark:bg-[#c74c2f]",
+    "dark:bg-[#d94743]",
+    "dark:bg-[#9d3338]",
+    "dark:bg-[#d91e2c]",
+    "dark:bg-[#921b29]",
+    "dark:bg-[#c04244]",
+    "dark:bg-[#b43b1e]",
+  ],
+  light: [
+    "bg-[#efe6f8]",
+    "bg-[#fcdff9]",
+    "bg-[#f9b8be]",
+    "bg-[#feded6]",
+    "bg-[#fad7d4]",
+    "bg-[#e3cbf0]",
+    "bg-[#ffb2c3]",
+    "bg-[#f3ccd1]",
+    "bg-[#f8c3b7]",
+    "bg-[#f4bce1]",
+  ],
+};
+
+export const randomGreenBg = {
+  dark: [
+    "dark:bg-[#254226]",
+    "dark:bg-[#244020]",
+    "dark:bg-[#083d36]",
+    "dark:bg-[#0b5144]",
+    "dark:bg-[#1d431d]",
+    "dark:bg-[#164039]",
+    "dark:bg-[#1c3d31]",
+    "dark:bg-[#12363a]",
+    "dark:bg-[#2e4527]",
+    "dark:bg-[#105039]",
+  ],
+  light: [
+    "bg-[#64e9b9]",
+    "bg-[#c8f0ef]",
+    "bg-[#e1fbf5]",
+    "bg-[#2bf17a]",
+    "bg-[#d3f6e2]",
+    "bg-[#b0e6d0]",
+    "bg-[#def2b7]",
+    "bg-[#baf306]",
+    "bg-[#a3e8c6]",
+    "bg-[#8ce69e]",
+  ],
+};
