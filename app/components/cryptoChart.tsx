@@ -8,6 +8,7 @@ import { CryptoAsset } from "../network/analytics/api";
 import usePriceMetrics from "../customHooks/usePriceMetrics";
 import CryptoMetrics from "./cryptoMetrics";
 import { randomRedBg, randomGreenBg } from "../utils/constants";
+import { DNA } from "react-loader-spinner";
 
 // display context menu button on chart for more options (export, print, fullscreen, etc)
 if (typeof Highcharts === "object") {
@@ -20,7 +21,7 @@ interface CryptoChartProps {
 
 export default function CryptoChart({ asset }: CryptoChartProps) {
   const chartComponentRef = useRef<HighchartsReact.RefObject>(null);
-  const { data: cryptoHistoricalData } = useHistoricalData({
+  const { data: cryptoHistoricalData, isLoading } = useHistoricalData({
     id: asset.id,
   });
 
@@ -101,6 +102,7 @@ export default function CryptoChart({ asset }: CryptoChartProps) {
       className={`w-full rounded-md shadow-xl ${
         randomBgColor.dark[Math.floor(Math.random() * 10)]
       } ${randomBgColor.light[Math.floor(Math.random() * 10)]}`}
+      aria-label={`${asset.name}-chart`}
     >
       <CryptoMetrics
         symbol={asset.symbol}
@@ -110,11 +112,17 @@ export default function CryptoChart({ asset }: CryptoChartProps) {
         priceChange={priceChange}
         percentChange={percentChange}
       />
-      <HighchartsReact
-        highcharts={Highcharts}
-        options={options}
-        ref={chartComponentRef}
-      />
+      {isLoading ? (
+        <div className="flex w-full items-center justify-center">
+          <DNA height="80" width="80" ariaLabel="loading-spinner" />
+        </div>
+      ) : (
+        <HighchartsReact
+          highcharts={Highcharts}
+          options={options}
+          ref={chartComponentRef}
+        />
+      )}
     </div>
   );
 }

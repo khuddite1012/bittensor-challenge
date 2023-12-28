@@ -18,21 +18,24 @@ export default function CryptoMetrics({
   percentChange,
 }: CryptoMetricsProps) {
   return (
-    <div className="p-2">
+    <div className="p-2" aria-label="crypto-metrics">
       <div className="flex items-center justify-between ">
         <p>{symbol}/USD</p>
-        <p>
-          {percentChange}% • {priceChange}
-        </p>
+        <div className="flex">
+          <p>{percentChange}%</p>
+          {priceChange && <p className="ml-2">• {priceChange}</p>}
+        </div>
       </div>
       <div className="flex items-start justify-between ">
         <p className="text-2xl font-semibold">
           {parseFloat(priceUsd).toFixed(2)}
         </p>
-        <div>
-          <p>H {maxPrice}</p>
-          <p>L {minPrice}</p>
-        </div>
+        {maxPrice && minPrice && (
+          <div>
+            <p>H {maxPrice}</p>
+            <p>L {minPrice}</p>
+          </div>
+        )}
       </div>
     </div>
   );
