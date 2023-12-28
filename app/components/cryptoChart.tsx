@@ -9,6 +9,7 @@ import usePriceMetrics from "../customHooks/usePriceMetrics";
 import CryptoMetrics from "./cryptoMetrics";
 import { randomRedBg, randomGreenBg } from "../utils/constants";
 
+// display context menu button on chart for more options (export, print, fullscreen, etc)
 if (typeof Highcharts === "object") {
   HighchartsExporting(Highcharts);
 }
@@ -80,6 +81,9 @@ export default function CryptoChart({ asset }: CryptoChartProps) {
           ]),
         },
       ],
+      time: {
+        useUTC: false,
+      },
     }),
     [asset.symbol, cryptoHistoricalData],
   );
